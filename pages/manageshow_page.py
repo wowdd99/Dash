@@ -48,17 +48,23 @@ class ManageShowPage(BasePage):
         assert show_new_after_split == "Awarded" or show_new_after_split == "Blocked Potential" or show_new_after_split == "Blocked Speculative", f"Wrong status.Value is {show_new_after_split}"
 
     def should_be_primary_producer(self):
+        # исправить индекс на переменную "+index+"
         primary_producer = self.browser.find_element(By.XPATH,"(//span[contains (text(), 'Primary Producer')]/following-sibling::span)["+index+"]").get_attribute("innerText")
         print(primary_producer)
+        print(len(primary_producer))
         if len(primary_producer) == 1:
             assert primary_producer, "Primary producer isn't displayed"
+        elif len(primary_producer) < 1:
+            assert len(primary_producer) == 0, "Primary producer is displayed, but shouldn't"
 
     def should_be_executive_producer(self):
         executive_producer = self.browser.find_element(By.XPATH,"(//span[contains (text(), 'Executive Producer')]/following-sibling::span)["+index+"]").get_attribute("innerText")
-        if len(executive_producer) > 1:
+        print(executive_producer)
+        print(len(executive_producer))
+        if len(executive_producer) == 1:
             assert executive_producer, "Executive producer isn't displayed"
         elif len(executive_producer) < 1:
-            assert self.is_not_element_present(executive_producer), "Executive producer is presented, but should not be"
+            assert len(executive_producer) == 0, "Executive producer is presented, but should not be"
 
     def should_be_start_date(self):
         start_date = self.browser.find_element(By.XPATH,"(//span[contains (text(), 'Start Date')]/parent::div) ["+index+"]").get_attribute("innerText")
@@ -80,10 +86,12 @@ class ManageShowPage(BasePage):
 
     def should_be_release_date(self):
         release_date = self.browser.find_element(By.XPATH, "(//span[contains(text(),'Release Date')]/following-sibling::span)["+index+"]").get_attribute("innerText")
+        print(release_date)
+        print(len(release_date))
         if len(release_date) == 1:
             assert release_date, "Release Date isn't displayed"
         elif len(release_date) < 1:
-            assert self.is_not_element_present(release_date), "Release Date is presented, but should not be"
+            assert len(release_date) == 0, "Release Date is presented, but should not be"
 
     def should_be_supervisor_seniority_split(self):
         supervisor = self.browser.find_element(By.XPATH, "(//div[contains(text(),'Supervisor')]/span)["+index+"]").get_attribute("innerText")
@@ -246,7 +254,7 @@ class ManageShowPage(BasePage):
 
     def check_that_upload_functionality_is_not_displayed(self):
         bid_weeks_functionality_empty = self.browser.find_element(*ManageShowLocators.BID_WEEKS_EMPTY)
-        assert bid_weeks_functionality_empty.is_displayed, "Bid weeks functionality empty isn't presented"
+        assert bid_weeks_functionality_empty, "Bid weeks functionality is presented,but shouldn't"
 
     def clicking_on_active_dropdown(self):
         active_dropdown = self.browser.find_element(*ManageShowLocators.ACTIVE_BTN)
