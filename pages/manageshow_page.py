@@ -51,20 +51,17 @@ class ManageShowPage(BasePage):
         # исправить индекс на переменную "+index+"
         primary_producer = self.browser.find_element(By.XPATH,"(//span[contains (text(), 'Primary Producer')]/following-sibling::span)["+index+"]").get_attribute("innerText")
         print(primary_producer)
-        print(len(primary_producer))
         if len(primary_producer) == 1:
             assert primary_producer, "Primary producer isn't displayed"
-        elif len(primary_producer) < 1:
-            assert len(primary_producer) == 0, "Primary producer is displayed, but shouldn't"
+        elif len(primary_producer) == 0:
+            assert not primary_producer, "Primary producer is displayed, but shouldn't"
 
     def should_be_executive_producer(self):
         executive_producer = self.browser.find_element(By.XPATH,"(//span[contains (text(), 'Executive Producer')]/following-sibling::span)["+index+"]").get_attribute("innerText")
-        print(executive_producer)
-        print(len(executive_producer))
         if len(executive_producer) == 1:
             assert executive_producer, "Executive producer isn't displayed"
-        elif len(executive_producer) < 1:
-            assert len(executive_producer) == 0, "Executive producer is presented, but should not be"
+        elif len(executive_producer) == 0:
+            assert not executive_producer, "Executive producer is presented, but should not be"
 
     def should_be_start_date(self):
         start_date = self.browser.find_element(By.XPATH,"(//span[contains (text(), 'Start Date')]/parent::div) ["+index+"]").get_attribute("innerText")
@@ -85,13 +82,12 @@ class ManageShowPage(BasePage):
         assert end_date_only_day, "Start date isn't displayed"
 
     def should_be_release_date(self):
-        release_date = self.browser.find_element(By.XPATH, "(//span[contains(text(),'Release Date')]/following-sibling::span)["+index+"]").get_attribute("innerText")
+        release_date = self.browser.find_element(By.XPATH, "(//span[contains(text(),'Release Date')]/following-sibling::span)[2]").get_attribute("innerText")
         print(release_date)
-        print(len(release_date))
         if len(release_date) == 1:
             assert release_date, "Release Date isn't displayed"
-        elif len(release_date) < 1:
-            assert len(release_date) == 0, "Release Date is presented, but should not be"
+        elif len(release_date) == 0:
+            assert not release_date, "Release Date is presented, but should not be"
 
     def should_be_supervisor_seniority_split(self):
         supervisor = self.browser.find_element(By.XPATH, "(//div[contains(text(),'Supervisor')]/span)["+index+"]").get_attribute("innerText")
