@@ -26,7 +26,7 @@ class ManageShowPage(BasePage):
         print(index)
 
     def show_code_split(self):
-        show_code_and_name = self.browser.find_element(By.XPATH, "(//div[@class='info__title'])["+index+"]").get_attribute("innerText")
+        show_code_and_name = self.browser.find_element(By.XPATH, "(//div[@class='info__title'])[3]").get_attribute("innerText")
         print(show_code_and_name)
         global show_code_and_name_new
         show_code_and_name_new = show_code_and_name.split("|")
@@ -179,7 +179,7 @@ class ManageShowPage(BasePage):
         assert edit_show_title, "Edit/create show UI isn't displayed"
 
     def clicking_on_ones_link(self):
-        ones = self.browser.find_element(By.XPATH, "(//a[contains(text(),'Ones')])["+index+"]")
+        ones = self.browser.find_element(By.XPATH, "(//a[contains(text(),'Ones')])[3]")
         ones.click()
         time.sleep(30)
 
@@ -193,7 +193,7 @@ class ManageShowPage(BasePage):
         self.should_be_show_ones_interface()
         show_code_in_ones = self.browser.find_element(*ManageShowLocators.SHOW_CODE_IN_ONES).get_attribute('innerText')
         print(show_code_in_ones)
-        assert show_code_after_split.find(show_code_in_ones), "Show code doesn't match"
+        assert show_code_after_split in show_code_in_ones, "Show code doesn't match"
 
     def clicking_on_financials_link(self):
         financials = self.browser.find_element(By.XPATH, "(//a[contains(text(),'Financials')])["+index+"]")
