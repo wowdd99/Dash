@@ -11,7 +11,7 @@ class LoginPageLocators:
 class MainPageLocators:
     MANAGE_SHOWS_LINK = (By.XPATH, "//*[contains (@class,'link__title') and contains (text(), 'Manage Shows')]")
     CREATE_NEW_SHOW_LINK = (By.XPATH, "//div[contains (text(), 'Create New Show')]")
-
+    BANNER_CLOSE = (By.XPATH, "//span[@class ='header-banner__close-button']")
 
 class ManageShowLocators:
     CARDS_LIST = (By.CSS_SELECTOR, "[class='show shows__item']")
@@ -45,6 +45,7 @@ class ManageShowLocators:
     SHOW_CODE_AND_NAME = (By.XPATH, "//div[@class='info__title']")
     BID_WEEKS_EMPTY = (By.XPATH, "//div[@class='empty-tab']")
     SHOW_CODE_AND_NAME_AFTER_SEARCH = (By.XPATH, "//div[@class='vue-recycle-scroller__item-wrapper']/div[@style!='transform: translateY(-9999px);']/descendant::div[@class='show shows__item']/descendant::div[@class='info__title']")
+
 
 class CreateNewShowLocators:
     CREATE_SHOW_TITLE = (By.XPATH, "//div[@class='header__title']/span[contains (text(), 'Create Show')]")

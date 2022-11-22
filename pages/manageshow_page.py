@@ -26,7 +26,7 @@ class ManageShowPage(BasePage):
         print(index)
 
     def show_code_split(self):
-        show_code_and_name = self.browser.find_element(By.XPATH, "(//div[@class='info__title'])[3]").get_attribute("innerText")
+        show_code_and_name = self.browser.find_element(By.XPATH, "(//div[@class='info__title'])["+index+"]").get_attribute("innerText")
         print(show_code_and_name)
         global show_code_and_name_new
         show_code_and_name_new = show_code_and_name.split("|")

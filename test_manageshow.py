@@ -18,6 +18,7 @@ class TestManageShows:
         page.login_user(username, password)
         page = MainPage(browser, link)
         page.should_be_logout_button()
+        page.close_banner()
 
     @pytest.mark.repeat(1)
     def test_ms_0001(self, browser):
@@ -51,6 +52,7 @@ class TestManageShows:
         page.open()
         page.should_open_manage_show_page()
         manage_page = ManageShowPage(browser, browser.current_url)
+        manage_page.select_random_card()
         manage_page.should_be_correct_result_after_search()
 
     def test_ms_0008(self, browser):
@@ -69,6 +71,7 @@ class TestManageShows:
         page.open()
         page.should_open_manage_show_page()
         manage_page = ManageShowPage(browser, browser.current_url)
+        manage_page.select_random_card()
         manage_page.should_be_edit_interface()
         manage_page.verify_show_stats_tab_display()
 
@@ -78,6 +81,7 @@ class TestManageShows:
         page.open()
         page.should_open_manage_show_page()
         manage_page = ManageShowPage(browser, browser.current_url)
+        manage_page.select_random_card()
         manage_page.verify_that_show_code_is_pre_selected()
 
     def test_ms_0018(self, browser):
@@ -86,6 +90,7 @@ class TestManageShows:
         page.open()
         page.should_open_manage_show_page()
         manage_page = ManageShowPage(browser, browser.current_url)
+        manage_page.select_random_card()
         manage_page.should_be_financial_interface_for_relevant_show()
 
     def test_ms_0020(self, browser):
@@ -122,6 +127,7 @@ class TestManageShows:
         page.open()
         page.should_open_manage_show_page()
         manage_page = ManageShowPage(browser, browser.current_url)
+        manage_page.select_random_card()
         manage_page.clicking_on_manage_link()
         manage_page.verify_show_stats_tab_display()
         manage_page.verify_show_inputs_tab_display()
@@ -140,6 +146,7 @@ class TestManageShows:
         page.open()
         page.should_open_manage_show_page()
         manage_page = ManageShowPage(browser, browser.current_url)
+        manage_page.select_random_card()
         manage_page.change_status_to_inactive()
         manage_page.clicking_on_manage_link()
         manage_page.selecting_show_code_in_the_card()
@@ -170,6 +177,7 @@ class TestManageShows:
         page.open()
         page.should_open_manage_show_page()
         manage_page = ManageShowPage(browser, browser.current_url)
+        manage_page.select_random_card()
         manage_page.open_create_show_page()
         manage_page.input_in_the_code_field()
         manage_page.input_in_the_show_color_field()

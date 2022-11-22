@@ -31,3 +31,7 @@ class MainPage(BasePage):
         create_new_user_link.click()
         time.sleep(10)
         assert self.is_element_present(*CreateNewShowLocators.CREATE_SHOW_TITLE), "Create new Show page isn't opened"
+
+    def close_banner(self):
+        banner = self.browser.find_element(*MainPageLocators.BANNER_CLOSE)
+        banner.click()
