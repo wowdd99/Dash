@@ -19,7 +19,7 @@ class MainPage(BasePage):
         time.sleep(5)
         manage_show_link = self.browser.find_element(*MainPageLocators.MANAGE_SHOWS_LINK)
         manage_show_link.click()
-        time.sleep(5)
+        time.sleep(25)
         assert self.is_element_present(*ManageShowLocators.MANAGE_SHOWS_TITLE), "Manage Show page isn't opened"
 
     def should_be_create_new_show_link(self):

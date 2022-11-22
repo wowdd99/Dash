@@ -1,5 +1,6 @@
 from pages.base_page import BasePage
 from pages.locatorsnew import LoginPageLocators
+import time
 
 
 class LoginPage(BasePage):
@@ -10,3 +11,4 @@ class LoginPage(BasePage):
         password_input.send_keys(password)
         log_in_btn = self.browser.find_element(*LoginPageLocators.LOGIN_BUTTON)
         log_in_btn.click()
+        time.sleep(20)

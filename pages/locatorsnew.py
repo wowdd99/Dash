@@ -44,6 +44,7 @@ class ManageShowLocators:
     SHOW_CODE_IN_ONES = (By.XPATH, "//div[@class ='Vheader__show']/descendant::div[@class='btn__overflow']")
     SHOW_CODE_AND_NAME = (By.XPATH, "//div[@class='info__title']")
     BID_WEEKS_EMPTY = (By.XPATH, "//div[@class='empty-tab']")
+    SHOW_CODE_AND_NAME_AFTER_SEARCH = (By.XPATH, "//div[@class='vue-recycle-scroller__item-wrapper']/div[@style!='transform: translateY(-9999px);']/descendant::div[@class='show shows__item']/descendant::div[@class='info__title']")
 
 class CreateNewShowLocators:
     CREATE_SHOW_TITLE = (By.XPATH, "//div[@class='header__title']/span[contains (text(), 'Create Show')]")
