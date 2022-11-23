@@ -320,10 +320,6 @@ class ManageShowPage(BasePage):
         show_code_input = self.browser.find_element(*ManageShowLocators.SHOW_CODE_FIELD)
         show_code_input.click()
         show_code_input_text = self.browser.find_element(*CreateNewShowLocators.INPUT)
-        global show_code_random
-        global show_code_random_str
-        show_code_random_str = (str(show_code_random))
-        print(str(show_code_random))
         show_code_input_text.send_keys(show_code_random)
         time.sleep(5)
 
